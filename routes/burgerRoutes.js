@@ -17,11 +17,15 @@ app.post('/burgers', (req, res) => {
 })
   // PUT one burger
 app.put('/burgers/:id', (req, res) => {
-res.send('put one pizza')
+    eatBurger(parseInt(req.params.id), () => {
+      res.sendStatus(200)
+    })
 })
   // DELETE one pizza
 app.delete('/burgers/:id', (req, res) => {
-res.send('delete one pizza')
+    removeBurger(parseInt(req.params.id), () => {
+      res.sendStatus(200)
+    })
 })
 
 }

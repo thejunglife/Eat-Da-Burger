@@ -20,16 +20,22 @@ module.exports = {
         })
   },
 
-  eatBurger(cb) {
-
-
+  eatBurger(id, cb) {
+      db.query(`UPDATE burgers SET eaten = true WHERE id = ${id}`, e => {
+        if (e) {
+          console.log(e)
+        }
       cb()
+      })
+
   },
 
-  removeBurger(cb) {
-
-
+  removeBurger(id, cb) {
+    db.query(`DELETE FROM burgers WHERE id = ${id}`, e => {
+      if (e) {
+        console.log(e)
+      }
       cb()
+    })
   }
-
 }
